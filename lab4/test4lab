@@ -1,0 +1,12 @@
+mat = '1 2; 3 4'
+rez = []
+strok = mat.split('; ')
+line1 = strok[0].split(' ')
+line2 = strok[1].split(' ')
+det = int(line1[0]) * int(line2[1]) - int(line1[1]) * int(line2[0])
+mezh = line1 + line2
+length = len(mezh)
+for i in range(0, length):
+    rez1 = int(mezh[i]) * det
+    rez.append(rez1)
+print('[',rez[0],rez[1],';',rez[2],rez[3],']')
