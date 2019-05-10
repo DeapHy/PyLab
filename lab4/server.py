@@ -1,7 +1,7 @@
 import socket
 
 socks = socket.socket()
-socks.bind(('', 9090))
+socks.bind(('', 9092))
 socks.listen(1)
 conn, addr = socks.accept()
 
@@ -11,10 +11,12 @@ while True:
     mat1 = conn.recv(1024).decode()
     if not mat1:
         break
-    rez = []; mat = []; line1 = []; line2 = []
-    mat.append(mat1[2]); mat.append(mat1[4]); mat.append(mat1[7]); mat.append(mat1[9])
-    line1.append(mat[0]); line1.append(mat[1])
-    line2.append(mat[2]); line2.append(mat[3])
+    leng = len(mat1)
+    mat = mat1[2:leng-2]
+    rez = []
+    strok = mat.split('; ')
+    line1 = strok[0].split(' ')
+    line2 = strok[1].split(' ')
     det = int(line1[0]) * int(line2[1]) - int(line1[1]) * int(line2[0])
     mezh = line1 + line2
     length = len(mezh)
